@@ -1,0 +1,98 @@
+<view class='video'>
+  <view class='videoHeader'>
+    <view class='videoHeaderLeft'>
+      <view class='headerImg'>
+      <image  src="{{store.store_logo}}" mode='aspectFit'></image>
+        <view class='headerBorder'></view>
+      </view>
+      <view class='headerName'>
+        <text>{{store.store_name}}</text>
+        <text class='num'>在线 1232</text>
+      </view>
+    </view>
+    <view class='videoHeaderRight'>
+      <view class='headerCare'>+ 关注</view>
+      <view class='headerCare headerMore'>更多直播</view>
+    </view>
+  </view>
+
+  <view class='videoShop'>
+    <scroll-view scroll-with-animation="true" scroll-y class='shopLeft' scroll-into-view="{{toList}}">
+      <view class='itemLeft' wx:for="{{goodsList}}" wx:key="" data-index="{{index}}" data-id="{{item.goods_id}}" bindtap='switchBar' >{{item.name}}
+        <image class='itemImage' src="{{item.image}}" mode='aspectFit'></image>
+        <view class='shopPrice'>￥{{item.shop_price}}</view>
+        <text class='shopIndex' wx:if="{{index!=0}}">{{index}}</text>
+        <text class='shopIndexEg' wx:if="{{index==0}}">正在推荐</text>
+      </view>
+    </scroll-view>
+
+    <view class='shopRight'>
+     <!-- <video src="{{store.stream_url}}" controls="false" autoplay="true" class='itemRight videoRight' wx:if="{{shopRight}}">-->
+        <video src="{{store.stream_url}}" controls="false" autoplay="true"  loop="true" class='itemRight videoRight' wx:if="{{shopRight}}">  
+      </video>
+      <view class='itemRight shopInfo' wx:if="{{!shopRight}}">
+        <view class='shopInfoHeader'>
+          <image class='shopImg' src="{{goods.goods.original_img}}" mode='aspectFit' bindtap="getGoodsDetail" data-goods_id="{{goods.goods.goods_id}}"></image>
+          <view class='shopInfoPrice'>￥{{price}}</view>
+          <view class='shopInfoIndex'>{{goods.goods.goods_name}}</view>
+          <image class='shopInfoClose' bindtap='closeShopRight' src="https://app.caizhanbao.cn/shop/close.png" mode='aspectFit'></image>
+        </view>
+        <view class='shopInfoContent'>
+          <view wx:for-index="pos" wx:for="{{goods.goods.goods_spec_list}}" class="view-sub-prop">
+          <text class="text-prop">{{item[0].spec_name}}</text>
+          <view  class="view-btns">
+            <text bindtap="propClick" data-index="{{pos}}" data-pos="{{index}}" class="{{textStates[item.isClick]}}" wx:for="{{item}}">{{item.item}}</text>
+            
+          </view>
+        </view>
+          <text class='titleText'>数量：</text>
+          <view class='shopNum'>
+            <view class='sub' data-index="{{index}}" bindtap="bindMinus">-</view>
+            <view class='num' data-index="{{index}}" bindchange="bindManual" >{{goods_num}}</view>
+            <view class='add' data-index="{{index}}" bindtap="bindPlus">+</view>
+
+          </view>
+        </view>
+        <view class='shopCar'>
+            <view class='addCar' bindtap='addCart'>加入购物车</view>
+            <view class='addBay' bindtap="bug">立即购买</view>
+            <view class='line'></view>
+            <image class='carImg' mode='aspectFit' src="https://app.caizhanbao.cn/shop/car.png" bindtap="goCart"></image>
+            
+        </view>
+
+
+      </view>
+    </view>
+
+
+
+
+  </view>
+
+  <view class='shopBottom'>
+    <image class='chat' wx:if="{{!inputShow}}" bindtap='showInput' src="https://app.caizhanbao.cn/shop/chat.png" mode='aspectFit'></image>
+    <view class='chatImg ' wx:if="{{inputShow}}">
+     <image class='chagImgOne' src="https://app.caizhanbao.cn/shop/chat.png"></image>
+      <image class='chatImgTwo' bindtap='closeInput' src='https://app.caizhanbao.cn/shop/closeImg.png'></image>
+
+    </view>
+
+    <view class='chatList' wx:for="{{msgs}}" scroll-y   bindscrolltolower >
+
+        <view class='chatItem'>
+          <view class='name'>{{item.fromAccountNick}}</view>
+          <view class='nameTitle'>
+            <image class='star' mode='aspectFit' src="https://app.caizhanbao.cn/shop/star.png"></image>
+          粉丝
+          </view>
+          <view class='peopleChat'>{{item.content}}</view>
+        </view>
+     
+    </view>
+    <view class='chatBottom' wx:if="{{inputShow}}"> 
+    <input class='chatText' bindblur="bindInputBlur" value="{{msgContent}}" ></input>
+    <view class='chatBtn' bindtap='bindConfirm'>发送</view>
+    </view>
+  </view>
+</view>

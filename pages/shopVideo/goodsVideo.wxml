@@ -1,0 +1,13 @@
+<!--pages/video/video.wxml-->
+
+<view class='main'>
+  <video class='mainVideo' controls="false" autoplay="true" src='{{mp4_url}}'></video>
+  <view class='mainInfo'>
+    <image class='mainInfoImg' src="{{goodsDetail.original_img}}" loop="true"></image>
+    <view class='shopInfo' bindtap='getGoodsDetail' data-goods_id='{{goodsDetail.goods_id}}'>
+      <view class='infoTitle'>{{goodsDetail.goods_name}}</view>
+      <view class='infoPrice'>￥{{goodsDetail.shop_price}}</view>
+    </view>
+    
+  </view>
+</view>

@@ -1,0 +1,50 @@
+/* pages/video/video.wxss */
+page{
+  background: #589fb5;
+}
+
+.main{
+  width: 550rpx;
+  height: 910rpx;
+  background:#fff;
+  margin: 0 auto;
+  margin-top: 130rpx;
+}
+
+.mainVideo{
+  width: 550rpx;
+  height: 790rpx;
+  margin: 0;
+}
+.mainInfo{
+  width: 550rpx;
+  height: 120rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.mainInfoImg{
+  width: 100rpx;
+  height: 100rpx;
+  background: red;
+  position: relative;
+  top: -3rpx;
+}
+.shopInfo{
+  width: 380rpx;
+  position: relative;
+  left: -15rpx;
+}
+.infoTitle{
+  font-size: 14px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.infoPrice{
+  width: 100%;
+  color: #f65783;
+  font-size: 12px;
+}
